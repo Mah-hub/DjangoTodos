@@ -46,6 +46,8 @@ class RegisterAPIView(GenericAPIView):
 
 class LoginAPIView(GenericAPIView):
 
+    authentication_classes = []
+
     serializer_class = LoginSerializer
 
     def post(self,request):
