@@ -17,12 +17,14 @@ class JWTAuthentication(BaseAuthentication):
 
         auth_token = auth_data.split(" ")
 
-        print(len(auth_token), 'OOOOOOOOO')
+        print(len(auth_token), 'OOOOOOOOO2')
 
         # if len(auth_token) !=2 :
         #     raise exceptions.AuthenticationFailed('Token na valid')
 
         token = auth_token[1]
+
+        print(token, 'OOOOOOOOO3')
 
 
 
@@ -39,7 +41,7 @@ class JWTAuthentication(BaseAuthentication):
             raise exceptions.AuthenticationFailed('Token is expired, login again')
 
         except jwt.DecodeError as ex:
-            raise exceptions.AuthenticationFailed('Token is invalid.')
+            raise exceptions.AuthenticationFailed(ex,'Token is invalid.')
 
         except User.DoesNotExist as no_user:
             raise exceptions.AuthenticationFailed('No such user.')
